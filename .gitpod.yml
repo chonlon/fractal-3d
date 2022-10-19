@@ -1,0 +1,7 @@
+tasks:
+  - name: "serve"
+    command: "cd src && http-server . -p 8080 --cors"
+
+ports:
+  - port: 8080
+    visibility: public

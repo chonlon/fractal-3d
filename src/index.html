@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src='https://cdn.everxyz.com/everapi/stable/everapi@v4.1.8.js'></script>
+</head>
+
+<body>
+    <!-- filename中需要正确的文件后缀名， -->
+    <ever-3d id="hello" width="800px" height='600px' filename="test.stp" url="asset.e3dx" />
+    <script>
+        let instance = window.EverAPI.getInstanceById('hello');
+        // 此处的 appid 与 appkey 需要填入你在 fracal 3d 申请得到的
+        // 下面的 appid 与 appkey 只在 localhost 可用
+        window.EverAPI.login('6103ec4a2189', 'cc239b39cd09383aba9b1310db8cf334')
+    </script>
+</body>
+
+</html>
