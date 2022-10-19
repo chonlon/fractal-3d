@@ -1,6 +1,6 @@
 tasks:
   - name: "serve"
-    command: "cd src && http-server . -p 8080 --cors"
+    command: "cd src && python -m http.server 8080"
 
 ports:
   - port: 8080
