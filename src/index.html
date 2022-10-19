@@ -7,14 +7,39 @@
 </head>
 
 <body>
-    <!-- filename中需要正确的文件后缀名， -->
-    <ever-3d id="hello" width="800px" height='600px' filename="test.stp" url="asset.e3dx" />
+    <!-- 也可以在父 dom 设置长宽 -->
+    <div style="height: 80vh; width: 90%">
+        <!-- filename中需要正确的文件后缀名， -->
+        <ever-3d id="hello"/>
+    </div>
+    <button id="btn1" class="btn">file1</button>
+    <button id="btn2" class="btn">file2</button>
     <script>
+        // 注意 id 需要和 html 中的 id 一致
         let instance = window.EverAPI.getInstanceById('hello');
+        
         // 此处的 appid 与 appkey 需要填入你在 fracal 3d 申请得到的
         // 下面的 appid 与 appkey 只在 localhost 可用
-        window.EverAPI.login('6103ec4a2189', 'cc239b39cd09383aba9b1310db8cf334')
+        window.EverAPI.login('6103ec4a2189', 'cc239b39cd09383aba9b1310db8cf334');
+
+        let btn1_file = { filename: 'file1.stp', url: 'asset.e3dx' };
+        let btn2_file = { filename: 'file2.sldprt', url: 'asset2.e3dx' };
+        instance.openFiles([btn1_file]);
+
+        document.getElementById('btn1').addEventListener('click', () => {
+            instance.openFiles([btn1_file]); // 注意这里是数组，这也意味着，你可以在一个场景中同时显示多个文件
+        });
+        document.getElementById('btn2').addEventListener('click', () => {
+            instance.openFiles([btn2_file]);
+        });
     </script>
+    <style>
+        .btn {
+            width: 100px;
+            height: 30px;
+            cursor: pointer;
+        }
+    </style>
 </body>
 
 </html>
