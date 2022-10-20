@@ -99,7 +99,11 @@
 				}}
 			/>
 		{:else if selected === 'Files'}
-			<Files />
+			<Files
+				apiOpenFile={(file) => {
+					api_instance?.openFiles([file]);
+				}}
+			/>
 		{:else}
 			<Config
 				updateApiConfig={(updated_config) => {
@@ -244,4 +248,6 @@
 		width: calc(50vh * 1.5);
 		margin-bottom: 5px;
 	}
+
+	/* add some styles to beautify push buttons */
 </style>

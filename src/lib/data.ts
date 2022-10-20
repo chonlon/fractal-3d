@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const config = {
 	lang: 'zh',
 	width: '100%',
@@ -124,24 +126,33 @@ const config = {
 	}
 };
 
-class File {
-	private _path: string;
+class FracalFile {
+	private _name: string;
 	private _uuid: string;
+	private _url: string;
+	private _status: string;
 
-	constructor(path: string) {
-		this._path = path;
+	get url(): string {
+		return this._url;
+	}
+
+	get status(): string {
+		return this._status;
+	}
+
+	constructor(name: string) {
+		this._name = name;
 		this._uuid = '';
+		this._url = '';
+		this._status = '';
 	}
 
-	private _loadCacheUuid(): string {
-		// 在我们这个例子中，我们将 uuid 保存在浏览器的localStorage中，所以我们需要从localStorage中读取
-		return localStorage.getItem(this._path) as string;
-	}
-
-	private _saveCacheUuid(): void {
-		// 在我们这个例子中，我们将 uuid 保存在浏览器的localStorage中
-		// 这里简单起见，我们直接使用文件的路径作为key
-		localStorage.setItem(this._path, this._uuid);
+	static fromJSON(json: any): FracalFile {
+		const file = new FracalFile(json._name);
+		file._uuid = json._uuid;
+		file._url = json._url;
+		file._status = json._status;
+		return file;
 	}
 
 	get uuid(): string {
@@ -156,15 +167,51 @@ class File {
 		return this._uuid !== '';
 	}
 
-	get path(): string {
-		return this._path;
+	get name(): string {
+		return this._name;
+	}
+
+	async uploadFile(file: File, onProgress: (progress: number) => void) {
+		const formData = new FormData();
+		formData.append('file', file);
+		try {
+			// 调用 uploadFile 方法，将包装好的 formData 上传到服务器
+			const { data } = await axios.post('https://api.evercraft.co/3d/v1/file/upload', formData, {
+				onUploadProgress(e) {
+					const { loaded, total } = e;
+					if (total) {
+						onProgress((loaded / total) * 100);
+					}
+				}
+			});
+
+			const { filename, uuid } = data.data;
+			this._uuid = uuid;
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	async pollingFileStatus() {
+		// 使用 uploadFile 返回的 uuid 查询该文件的转换状态
+		const { data } = await axios.get('https://api.evercraft.co/3d/v1/file', {
+			params: { key: this._uuid }
+		});
+
+		const { status, url } = data;
+		console.log(data);
+
+		if (status === 'succeed') {
+			this._url = `https://evercraft.co${url}`;
+			this._status = 'succeed';
+		} else if (status === 'pending' || status === 'running') {
+			this._status = 'pending';
+		} else {
+			this._status = 'failed';
+		}
+
+		return this._status;
 	}
 }
 
-const files = [
-	new File('src/lib/data.ts'),
-	new File('src/lib/data.ts'),
-	new File('src/lib/data.ts')
-];
-
-export { config, files };
+export { config, FracalFile };
