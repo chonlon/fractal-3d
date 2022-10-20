@@ -7,3 +7,9 @@ declare namespace App {
 	// interface Error {}
 	// interface Platform {}
 }
+
+declare global {
+	interface Window {
+		EverAPI: any;
+	}
+}
