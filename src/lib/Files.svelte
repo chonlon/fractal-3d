@@ -6,9 +6,11 @@
 	let files: FracalFile[] = [];
 	import { onMount } from 'svelte';
 
-	async function uploadFile(e) {
-		console.log(e);
-		const file = e.target.files[0];
+	async function uploadFile(e: Event) {
+		const target = e.target as HTMLInputElement;
+		if (!target.files) return;
+		// 这里只上传第一个文件
+		const file = target.files[0];
 		let fracal_file = new FracalFile(file.name);
 		files = [...files, fracal_file];
 		saveFiles();
@@ -25,7 +27,7 @@
 		}, 2000);
 	}
 
-	function openFile(file) {
+	function openFile(file: { name: string; url: string }) {
 		let _file = { filename: file.name, url: file.url };
 		apiOpenFile(_file);
 	}
@@ -36,7 +38,7 @@
 		if (saved_files) {
 			let _files = JSON.parse(saved_files);
 			// map to FracalFile array
-			files = _files.map((f) => FracalFile.fromJSON(f));
+			files = _files.map((f: any) => FracalFile.fromJSON(f));
 		}
 	});
 
@@ -47,7 +49,7 @@
 
 <div>
 	<button class="upload">
-		<input type="file" id="file" style="display: none" on:change={uploadFile} />
+		<input type="file" id="file" style="display: none" on:change={(e) => {}} />
 		<label for="file">Upload file</label>
 	</button>
 

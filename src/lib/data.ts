@@ -171,6 +171,7 @@ class FracalFile {
 		return this._name;
 	}
 
+	// 上传文件到服务器
 	async uploadFile(file: File, onProgress: (progress: number) => void) {
 		const formData = new FormData();
 		formData.append('file', file);
@@ -192,6 +193,7 @@ class FracalFile {
 		}
 	}
 
+	// 从服务器查询文件转换状态
 	async pollingFileStatus() {
 		// 使用 uploadFile 返回的 uuid 查询该文件的转换状态
 		const { data } = await axios.get('https://api.evercraft.co/3d/v1/file', {
@@ -201,12 +203,12 @@ class FracalFile {
 		const { status, url } = data;
 		console.log(data);
 
-		if (status === 'succeed') {
-			this._url = `https://evercraft.co${url}`;
+		if (status === 'succeed') { // 转换成功
+			this._url = `https://evercraft.co${url}`; // 拼接文件的 url
 			this._status = 'succeed';
-		} else if (status === 'pending' || status === 'running') {
+		} else if (status === 'pending' || status === 'running') { // 转换中
 			this._status = 'pending';
-		} else {
+		} else { // 转换失败
 			this._status = 'failed';
 		}
 

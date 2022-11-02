@@ -6,7 +6,7 @@
 	import { onMount } from 'svelte';
 	import { config } from '../lib/data';
 
-	let logo = '';
+	let logo = 'favicon.png';
 
 	let selected = 'Basic';
 	let api_instance = null;
@@ -44,7 +44,7 @@
 							selected = 'Basic';
 						}}
 					>
-						Basic
+						功能
 					</button>
 				</li>
 				<li class:active-tab={selected === 'Files'}>
@@ -54,7 +54,7 @@
 							selected = 'Files';
 						}}
 					>
-						Files
+						文件
 					</button>
 				</li>
 				<li class:active-tab={selected === 'Configs'}>
@@ -64,13 +64,17 @@
 							selected = 'Configs';
 						}}
 					>
-						Configs
+						配置
 					</button>
 				</li>
 			</ul>
 		</nav>
 		<div>
-			<p>示例</p>
+			<a
+				href="https://ever-xyz.feishu.cn/wiki/wikcnF25L17vMju8k6bGb77j06c?create_from=create_doc_to_wiki"
+			>
+				文档
+			</a>
 		</div>
 	</header>
 	<div class="content">
@@ -80,6 +84,7 @@
 
 		{#if selected === 'Basic'}
 			<Basic
+				bind:instance={api_instance}
 				toggleApiAnno3D={(anno) => {
 					if (api_instance.startAnno3D) {
 						api_instance.startAnno3D(anno);
