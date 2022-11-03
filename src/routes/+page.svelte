@@ -7,6 +7,7 @@
 	import { config } from '../lib/data';
 
 	let logo = 'favicon.png';
+	let doc_logo = 'doc.png';
 
 	let selected = 'Basic';
 	let api_instance = null;
@@ -30,7 +31,7 @@
 	<header>
 		<script src="https://cdn.everxyz.com/everapi/stable/everapi@v4.1.8.js"></script>
 		<div class="corner">
-			<a href="">
+			<a href="https://evercraft.co/home">
 				<img src={logo} alt="Fracal 3D" />
 			</a>
 		</div>
@@ -73,7 +74,7 @@
 			<a
 				href="https://ever-xyz.feishu.cn/wiki/wikcnF25L17vMju8k6bGb77j06c?create_from=create_doc_to_wiki"
 			>
-				文档
+				<img src={doc_logo} alt="文档" width="20px" height="20px" />
 			</a>
 		</div>
 	</header>
@@ -101,6 +102,9 @@
 				}}
 				setApiLanguage={(lang) => {
 					api_instance?.changeLanguage(lang);
+				}}
+				printMeasureList={() => {
+					console.log(api_instance?.getMeasureList());
 				}}
 			/>
 		{:else if selected === 'Files'}

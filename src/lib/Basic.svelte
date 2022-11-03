@@ -6,17 +6,25 @@
 	export let setApiTheme: (light: boolean) => void;
 	export let takeApiPhoto: () => string;
 	export let setApiLanguage: (lang: string) => void;
+	export let printMeasureList: () => void;
 
 	export let instance: any;
 
 	let anno3d = false;
 	let lightTheme = false;
 	let printMeasures = false;
+	let printAnno = false;
 
 	let screenURL = '';
 
 	function measurePrint(data: any) {
 		if (printMeasures) {
+			console.log(data);
+		}
+	}
+
+	function annoPrint(data: any) {
+		if (printAnno) {
 			console.log(data);
 		}
 	}
@@ -31,6 +39,14 @@
 				instance.on('addMeasure', measurePrint);
 				instance.on('removeMeasure', measurePrint);
 				instance.on('updateMeasure', measurePrint);
+
+				instance.on('addAnnotation', annoPrint);
+				instance.on('removeAnnotation', annoPrint);
+				instance.on('updateAnnotation', annoPrint);
+				instance.on('clickAnnotation', annoPrint);
+				instance.on('closeAnnotation', annoPrint);
+
+				window.ins = instance;
 			});
 		}
 	}
@@ -78,8 +94,20 @@
 	>
 		开/关测量事件打印
 	</button>
-	<button> 开/关标注 </button>
-	<button> 打印所有标注 </button>
+	<button
+		on:click={() => {
+			printAnno = !printAnno;
+		}}
+	>
+		开/关标注事件打印
+	</button>
+	<button
+		on:click={() => {
+			printMeasureList();
+		}}
+	>
+		打印所有测量
+	</button>
 
 	<img src={screenURL} alt="" style="width: 300px" />
 </div>
