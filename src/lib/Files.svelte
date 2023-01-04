@@ -49,7 +49,7 @@
 
 <div>
 	<button class="upload">
-		<input type="file" id="file" style="display: none" on:change={(e) => {}} />
+		<input type="file" id="file" style="display: none" on:change={(e) => {uploadFile(e)}} />
 		<label for="file">Upload file</label>
 	</button>
 

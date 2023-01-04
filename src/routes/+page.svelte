@@ -31,7 +31,7 @@
 	<header>
 		<script src="https://cdn.everxyz.com/everapi/stable/everapi@v4.1.8.js"></script>
 		<div class="corner">
-			<a href="https://evercraft.co/home">
+			<a href="https://fractal3d.everxyz.com/">
 				<img src={logo} alt="Fracal 3D" />
 			</a>
 		</div>
@@ -72,7 +72,7 @@
 		</nav>
 		<div>
 			<a
-				href="https://ever-xyz.feishu.cn/wiki/wikcnF25L17vMju8k6bGb77j06c?create_from=create_doc_to_wiki"
+				href="https://ever-xyz.feishu.cn/wiki/wikcnf3cKXdQGqiIiC3Ld7NS5Ud"
 			>
 				<img src={doc_logo} alt="文档" width="20px" height="20px" />
 			</a>
