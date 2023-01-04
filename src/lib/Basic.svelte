@@ -35,19 +35,18 @@
 		if (instance) {
 			instance.on('rendered', () => {
 				console.log('rendered');
-
-				instance.on('addMeasure', measurePrint);
-				instance.on('removeMeasure', measurePrint);
-				instance.on('updateMeasure', measurePrint);
-
-				instance.on('addAnnotation', annoPrint);
-				instance.on('removeAnnotation', annoPrint);
-				instance.on('updateAnnotation', annoPrint);
-				instance.on('clickAnnotation', annoPrint);
-				instance.on('closeAnnotation', annoPrint);
-
-				window.ins = instance;
 			});
+			instance.on('addMeasure', measurePrint);
+			instance.on('removeMeasure', measurePrint);
+			instance.on('updateMeasure', measurePrint);
+
+			instance.on('addAnnotation', annoPrint);
+			instance.on('removeAnnotation', annoPrint);
+			instance.on('updateAnnotation', annoPrint);
+			instance.on('clickAnnotation', annoPrint);
+			instance.on('closeAnnotation', annoPrint);
+
+			window.ins = instance;
 		}
 	}
 </script>
@@ -72,7 +71,6 @@
 	<button
 		on:click={() => {
 			screenURL = takeApiPhoto();
-			console.log(screenURL);
 		}}>截图</button
 	>
 	<button
