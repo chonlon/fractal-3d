@@ -29,7 +29,7 @@
 
 <div class="App">
 	<header>
-		<script src="https://cdn.everxyz.com/everapi/stable/everapi@v4.1.8.js"></script>
+		<script src="https://cdn.everxyz.com/everapi/stable/everapi@v4.2.5.js"></script>
 		<div class="corner">
 			<a href="https://fractal3d.everxyz.com/">
 				<img src={logo} alt="Fracal 3D" />
@@ -253,8 +253,8 @@
 	}
 
 	.api {
-		height: 50vh;
-		width: calc(50vh * 1.5);
+		height: 65vh;
+		width: calc(65vh * 1.5);
 		margin-bottom: 5px;
 	}
 
