@@ -43,7 +43,8 @@ npm run dev -- --open
 ## 一些说明
 
 页面入口是 `src/routes/+page.svelte`；在这里你可以看到如何初始化以及使用 Fractal 3d api。
-启动后，你再页面会看到 3 个 tab， ‘功能’ 对应 `src/lib/Basic.svelte`, ‘文件’ 对应 `src/lib/File.svelte`, ‘配置’ 对应 `src/lib/Config.svelte`。
 
-
-
+启动后，你在页面会看到 3 个 tab：
+- ‘功能’ 对应 `src/lib/Basic.svelte`
+- ‘文件’ 对应 `src/lib/File.svelte`
+- ‘配置’ 对应 `src/lib/Config.svelte`
