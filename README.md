@@ -1,6 +1,6 @@
-# Fracal 3d Demo
+# Fractal 3d Demo
 
-这个仓库是一个关于如何使用 Fracal 3d 的示例。
+这个仓库是一个关于如何使用 Fractal 3d 的示例。
 
 
 ## Developing

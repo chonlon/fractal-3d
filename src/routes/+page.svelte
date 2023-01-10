@@ -19,7 +19,7 @@
 		}
 		window.api_instance = api_instance;
 
-		// 此处的 appid 与 appkey 需要填入你在 fracal 3d 申请得到的
+		// 此处的 appid 与 appkey 需要填入你在 fractal 3d 申请得到的
 		// 下面的 appid 与 appkey 只在 localhost 可用
 		window.EverAPI.login('6103ec4a2189', 'cc239b39cd09383aba9b1310db8cf334');
 
@@ -32,7 +32,7 @@
 		<script src="https://cdn.everxyz.com/everapi/stable/everapi@v4.2.5.js"></script>
 		<div class="corner">
 			<a href="https://fractal3d.everxyz.com/">
-				<img src={logo} alt="Fracal 3D" />
+				<img src={logo} alt="Fractal 3D" />
 			</a>
 		</div>
 

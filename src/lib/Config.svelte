@@ -24,7 +24,7 @@
 	<textarea class="config-editor" bind:value={configStr} />
 
 	<button on:click={updateConfig}>Update config</button>
-	<p> 阅读<a href="https://ever-xyz.feishu.cn/wiki/wikcnRVP7vU4eG91LGu99xSAVfg#XQWqdm0esoO8Y8xW6BBcfe3bnfd">更多</a>关于 Fracal 3D 配置的内容 </p>
+	<p> 阅读<a href="https://ever-xyz.feishu.cn/wiki/wikcnRVP7vU4eG91LGu99xSAVfg#XQWqdm0esoO8Y8xW6BBcfe3bnfd">更多</a>关于 Fractal 3D 配置的内容 </p>
 </div>
 
 <style>

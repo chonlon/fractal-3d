@@ -126,7 +126,7 @@ const config = {
 	}
 };
 
-class FracalFile {
+class FractalFile {
 	private _name: string;
 	private _uuid: string;
 	private _url: string;
@@ -147,8 +147,8 @@ class FracalFile {
 		this._status = '';
 	}
 
-	static fromJSON(json: any): FracalFile {
-		const file = new FracalFile(json._name);
+	static fromJSON(json: any): FractalFile {
+		const file = new FractalFile(json._name);
 		file._uuid = json._uuid;
 		file._url = json._url;
 		file._status = json._status;
@@ -216,4 +216,4 @@ class FracalFile {
 	}
 }
 
-export { config, FracalFile };
+export { config, FractalFile };

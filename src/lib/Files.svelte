@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { FracalFile } from './data';
+	import { FractalFile } from './data';
 
 	export let apiOpenFile: (file: { filename: string; url: string }) => void;
 
-	let files: FracalFile[] = [];
+	let files: FractalFile[] = [];
 	import { onMount } from 'svelte';
 
 	async function uploadFile(e: Event) {
@@ -11,14 +11,14 @@
 		if (!target.files) return;
 		// 这里只上传第一个文件
 		const file = target.files[0];
-		let fracal_file = new FracalFile(file.name);
-		files = [...files, fracal_file];
+		let fractal_file = new FractalFile(file.name);
+		files = [...files, fractal_file];
 		saveFiles();
-		await fracal_file.uploadFile(file, (progress) => {
+		await fractal_file.uploadFile(file, (progress) => {
 			console.log('uploading: ', progress, '%');
 		});
 		let timer = setInterval(async () => {
-			let status = await fracal_file.pollingFileStatus();
+			let status = await fractal_file.pollingFileStatus();
 			if (status !== 'pending' && status !== 'running') {
 				clearInterval(timer);
 			}
@@ -37,8 +37,8 @@
 		let saved_files = localStorage.getItem('files');
 		if (saved_files) {
 			let _files = JSON.parse(saved_files);
-			// map to FracalFile array
-			files = _files.map((f: any) => FracalFile.fromJSON(f));
+			// map to FractalFile array
+			files = _files.map((f: any) => FractalFile.fromJSON(f));
 		}
 	});
 
